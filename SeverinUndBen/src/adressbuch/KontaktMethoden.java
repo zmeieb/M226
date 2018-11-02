@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public interface KontaktMethoden {
 	
-	public Kontakt erstelleKontakt();
+	public Person erstelleKontakt();
 	
-	public Kontakt bearbeiteKontakt(String vorname, ArrayList<Person> listPersonen);
+	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPersonen);
 	
 	public void löscheKontakt(String vorname, ArrayList<Person> listPersonen);
 	

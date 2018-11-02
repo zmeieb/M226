@@ -1,7 +1,6 @@
 package adressbuch;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main extends Erstellen{
@@ -47,7 +46,7 @@ public class Main extends Erstellen{
 				System.out.println("Ok, Good Bye");
 				System.exit(1);
 			}
-			
+			scan.close();
 			
 		}
 	}

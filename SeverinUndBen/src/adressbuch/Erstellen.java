@@ -1,6 +1,5 @@
 package adressbuch;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,61 +9,52 @@ public class Erstellen implements KontaktMethoden {
 	private Scanner scan;
 
 	@Override
-	public Kontakt erstelleKontakt() {
-		String vorname;
-		String nachname;
-		String alter;
-		String telefonnummer;
-		String geschlecht;
-		String email;
-		String adresse;
-		String plz;
-		String ort;
+	public Person erstelleKontakt() {
 
 		Person person = new Person();
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie den Vornamen des neuen Kontakts ein: ");
-		vorname = scan.nextLine();
+		String vorname = scan.nextLine();
 		person.setVorname(vorname);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie den Nachnamen des neuen Kontakts ein: ");
-		nachname = scan.nextLine();
+		String nachname = scan.nextLine();
 		person.setNachname(nachname);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie das Alter des neuen Kontakts ein: ");
-		alter = scan.nextLine();
+		String alter = scan.nextLine();
 		person.setAlter(alter);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie die Telefonnummer des neuen Kontakts ein: ");
-		telefonnummer = scan.nextLine();
+		String telefonnummer = scan.nextLine();
 		person.setTelefonnummer(telefonnummer);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie das Geschlecht des neuen Kontakts ein: ");
-		geschlecht = scan.nextLine();
+		String geschlecht = scan.nextLine();
 		person.setGeschlecht(geschlecht);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie das Email des neuen Kontakts ein: ");
-		email = scan.nextLine();
+		String email = scan.nextLine();
 		person.setEmail(email);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie das Adresse des neuen Kontakts ein: ");
-		adresse = scan.nextLine();
+		String adresse = scan.nextLine();
 		person.setAdresse(adresse);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie das Postleitzahl des neuen Kontakts ein: ");
-		plz = scan.nextLine();
+		String plz = scan.nextLine();
 		person.setPlz(plz);
 
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie den Ort des neuen Kontakts ein: ");
-		ort = scan.nextLine();
+		String ort = scan.nextLine();
 		person.setOrt(ort);
 
 		return person;
@@ -105,7 +95,7 @@ public class Erstellen implements KontaktMethoden {
 	}
 
 	@Override
-	public Kontakt bearbeiteKontakt(String vorname, ArrayList<Person> listPersonen) {
+	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPersonen) {
 		zeigeKontaktDetails(vorname, listPersonen);
 		löscheKontakt(vorname, listPersonen);
 		return erstelleKontakt();

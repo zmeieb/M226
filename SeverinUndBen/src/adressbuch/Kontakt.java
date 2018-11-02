@@ -44,7 +44,4 @@ public class Kontakt {
 	public void setOrt(String ort) {
 		Ort = ort;
 	}
-	
-	
-
 }
