@@ -1,6 +1,6 @@
 package adressbuch;
 
-public class Kontakt extends Person {
+public class Kontakt {
 	private String telefonnummer;
 	private String geschlecht;
 	private String email;

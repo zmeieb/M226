@@ -1,6 +1,6 @@
 package adressbuch;
 
-public class Person {
+public class Person extends Kontakt{
 	private String vorname;
 	private String nachname;
 	private String alter;
@@ -22,5 +22,9 @@ public class Person {
 	}
 	public void setAlter(String alter) {
 		this.alter = alter;
+	}
+	public boolean matches(String string) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
