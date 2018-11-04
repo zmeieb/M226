@@ -7,7 +7,7 @@ public class Person {
 	private String telefonnummer;
 	private String geschlecht;
 	private String email;
-	private String adresse;
+	private String strasse;
 	private String plz;
 	private String Ort;
 	
@@ -44,11 +44,11 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdresse() {
-		return adresse;
+	public String getStrasse() {
+		return strasse;
 	}
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setStrasse(String strasse) {
+		this.strasse = strasse;
 	}
 	public String getPlz() {
 		return plz;

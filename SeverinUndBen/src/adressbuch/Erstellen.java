@@ -38,17 +38,17 @@ public class Erstellen implements KontaktMethoden {
 		person.setGeschlecht(geschlecht);
 
 		scan = new Scanner(System.in);
-		System.out.println("Geben sie das Email des neuen Kontakts ein: ");
+		System.out.println("Geben sie die Email des neuen Kontakts ein: ");
 		String email = scan.nextLine();
 		person.setEmail(email);
 
 		scan = new Scanner(System.in);
-		System.out.println("Geben sie das Adresse des neuen Kontakts ein: ");
-		String adresse = scan.nextLine();
-		person.setAdresse(adresse);
+		System.out.println("Geben sie die Strasse mit Hausnummer des neuen Kontakts ein: ");
+		String strasse = scan.nextLine();
+		person.setStrasse(strasse);
 
 		scan = new Scanner(System.in);
-		System.out.println("Geben sie das Postleitzahl des neuen Kontakts ein: ");
+		System.out.println("Geben sie die Postleitzahl des neuen Kontakts ein: ");
 		String plz = scan.nextLine();
 		person.setPlz(plz);
 
@@ -61,10 +61,10 @@ public class Erstellen implements KontaktMethoden {
 	}
 
 	@Override
-	public void löscheKontakt(String vorname, ArrayList<Person> listPersonen) {
-		for (Person person : listPersonen) {
+	public void löscheKontakt(String vorname, ArrayList<Person> listPerson) {
+		for (Person person : listPerson) {
 			if (person.getVorname().equals(vorname)) {
-				listPersonen.remove(person);
+				listPerson.remove(person);
 				System.out.println("Kontakt wurde erfolgreich gelöscht. ");
 			} else {
 				System.out.println("Es wurde kein Kontakt mit diesem Vornamen gefunden. ");
@@ -73,32 +73,40 @@ public class Erstellen implements KontaktMethoden {
 	}
 
 	@Override
-	public void zeigeKontaktDetails(String vorname, ArrayList<Person> listPersonen) {
-		for (Person person : ListPerson) {
+	public void zeigeKontaktDetails(String vorname, ArrayList<Person> listPerson) {
+		for (Person person : listPerson) {
 			if (person.getVorname().equals(vorname)) {
-				System.out.println(person.getVorname());
-				System.out.println(person.getNachname());
-				System.out.println(person.getAlter());
-				System.out.println(person.getEmail());
-				System.out.println(person.getTelefonnummer());
-				System.out.println(person.getGeschlecht());
-				System.out.println(person.getPlz() + person.getOrt());
+				System.out.println("Vorname: " + person.getVorname());
+				System.out.println("Nachname: " + person.getNachname());
+				System.out.println("Alter: " + person.getAlter());
+				System.out.println("Email: " + person.getEmail());
+				System.out.println("Telefon Nr.: " + person.getTelefonnummer());
+				System.out.println("Geschlecht: " + person.getGeschlecht());
+				System.out.println("Strasse: " + person.getStrasse());
+				System.out.println("Ort: " + person.getPlz() +" "+ person.getOrt());
 			}
 		}
 	}
 
 	@Override
 	public void showAllContacts(ArrayList<Person> listPerson) {
-		for (Person person : ListPerson) {
-			System.out.println(person.getVorname() + person.getNachname());
+		for (Person person : listPerson) {
+			System.out.println(person.getVorname() + " " + person.getNachname());
 		}
 	}
 
 	@Override
-	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPersonen) {
-		zeigeKontaktDetails(vorname, listPersonen);
-		löscheKontakt(vorname, listPersonen);
-		return erstelleKontakt();
+	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPerson) {
+		for (Person person : listPerson) {
+			if (person.getVorname().equals(vorname)) {
+				listPerson.remove(person);
+				System.out.println("Bearbeite Kontakt!");
+				return erstelleKontakt();
+			} else {
+				System.out.println("Es wurde kein Kontakt mit diesem Vornamen gefunden. ");
+			}
+		}
+		return null;
 	}
 
 }
