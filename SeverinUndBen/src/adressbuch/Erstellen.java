@@ -85,6 +85,9 @@ public class Erstellen implements KontaktMethoden {
 				System.out.println("Strasse: " + person.getStrasse());
 				System.out.println("Ort: " + person.getPlz() +" "+ person.getOrt());
 			}
+			else {
+				System.out.println("Es wurde keine Person mit diesem Vornamen gefunden!");
+			}
 		}
 	}
 
