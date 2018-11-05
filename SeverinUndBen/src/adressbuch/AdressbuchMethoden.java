@@ -3,14 +3,21 @@ package adressbuch;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Erstellen implements KontaktMethoden {
+public class AdressbuchMethoden implements KontaktMethoden {
 	private ArrayList<Person> ListPerson = new ArrayList<>();
 
 	private Scanner scan;
-
+	
+	/*
+	 * (Javadoc)
+	 * @see adressbuch.KontaktMethoden#erstelleKontakt()
+	 * 
+	 * Die Methode erstelleKontakt() gibt einen Kontakt zurück.
+	 * Jedes Attribut der Person Klasse wird abgefragt, gescannt und gesetzt.
+	 */
 	@Override
 	public Person erstelleKontakt() {
-
+		
 		Person person = new Person();
 		scan = new Scanner(System.in);
 		System.out.println("Geben sie den Vornamen des neuen Kontakts ein: ");
@@ -102,6 +109,7 @@ public class Erstellen implements KontaktMethoden {
 	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPerson) {
 		for (Person person : listPerson) {
 			if (person.getVorname().equals(vorname)) {
+				//Bearbeiten ist sehr schwierig, daher löscht man den alten Kontakt zuerst und erstellt danach eigentlich einen Neuen
 				listPerson.remove(person);
 				System.out.println("Bearbeite Kontakt!");
 				return erstelleKontakt();

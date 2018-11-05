@@ -3,14 +3,14 @@ package adressbuch;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main extends Erstellen{
+public class Main extends AdressbuchMethoden{
 	public static void main(String [] args) {
 		ArrayList<Person> listPerson = new ArrayList<>();
 		boolean fertig = true;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Erstellen wir zu Beginn einen Kontakt.\n");
-		Erstellen erstelle = new Erstellen();
-		listPerson.add(erstelle.erstelleKontakt());
+		AdressbuchMethoden adressbuchMethoden = new AdressbuchMethoden();
+		listPerson.add(adressbuchMethoden.erstelleKontakt());
 		System.out.println("Erfolgreich erstellt! \n\n");
 		while(fertig) {
 			System.out.println("\n Was möchten sie als nächstes tun?\n"
@@ -24,18 +24,18 @@ public class Main extends Erstellen{
 			
 			if (nextStep.equals("1")) {
 				System.out.println("\n\n");
-				erstelle.showAllContacts(listPerson);
+				adressbuchMethoden.showAllContacts(listPerson);
 			}
 			else if (nextStep.equals("2")) {
 				System.out.println("\n\n");
 				System.out.println("Geben sie den Vornamen des Kontaktes ein: ");
 				String namen = scan.nextLine();
-				erstelle.zeigeKontaktDetails(namen, listPerson);
+				adressbuchMethoden.zeigeKontaktDetails(namen, listPerson);
 			}
 			else if (nextStep.equals("3")) {
 				System.out.println("\n\n");
 				Person p = new Person();
-				p = erstelle.erstelleKontakt();
+				p = adressbuchMethoden.erstelleKontakt();
 				listPerson.add(p);
 				System.out.println("Kontakt erfolgreich erstellt! \n");
 			}
@@ -43,14 +43,14 @@ public class Main extends Erstellen{
 				System.out.println("\n\n");
 				System.out.println("Geben sie den Vornamen des Kontaktes ein, den sie bearbeiten möchten: ");
 				String namen = scan.nextLine();
-				listPerson.add(erstelle.bearbeiteKontakt(namen, listPerson));
+				listPerson.add(adressbuchMethoden.bearbeiteKontakt(namen, listPerson));
 				System.out.println("Kontakt erfolgreich bearbeitet! \n");
 			}
 			else if (nextStep.equals("5")) {
 				System.out.println("\n\n");
 				System.out.println("Geben sie den Vornamen des Kontaktes ein, den sie löschen möchten: ");
 				String namen = scan.nextLine();
-				erstelle.löscheKontakt(namen, listPerson);
+				adressbuchMethoden.löscheKontakt(namen, listPerson);
 				System.out.println("Kontakt erfolgreich gelöscht! \n");
 			}
 			else if (nextStep.equals("6")) {
