@@ -66,7 +66,16 @@ public class AdressbuchMethoden implements KontaktMethoden {
 
 		return person;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see adressbuch.KontaktMethoden#löscheKontakt(java.lang.String, java.util.ArrayList)
+	 * 
+	 * Mit dieser Methode kann man einen Kontakt löschen.
+	 * 
+	 * Wichtig dabei ist, dass der Vorname mitgegeben wird, damit die Applikation auch weiss
+	 * wer aus der mitgegebenen Liste gelöscht werden muss.
+	 */
 	@Override
 	public void löscheKontakt(String vorname, ArrayList<Person> listPerson) {
 		for (Person person : listPerson) {
