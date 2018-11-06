@@ -117,12 +117,12 @@ public class AdressbuchMethoden implements KontaktMethoden {
 	@Override
 	public Person bearbeiteKontakt(String vorname, ArrayList<Person> listPerson) {
 		for (Person person : listPerson) {
-			if (person.getVorname().equals(vorname)) {
+			if (vorname.equals(person.getVorname())) {
 				//Bearbeiten ist sehr schwierig, daher löscht man den alten Kontakt zuerst und erstellt danach eigentlich einen Neuen
 				listPerson.remove(person);
 				System.out.println("Bearbeite Kontakt!");
 				return erstelleKontakt();
-			} else {
+			} else if(person.getVorname() != vorname) {
 				System.out.println("Es wurde kein Kontakt mit diesem Vornamen gefunden. ");
 			}
 		}

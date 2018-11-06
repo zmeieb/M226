@@ -3,7 +3,7 @@ package adressbuch;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main extends AdressbuchMethoden{
+public class Main {
 	public static void main(String [] args) {
 		ArrayList<Person> listPerson = new ArrayList<>();
 		boolean fertig = true;
