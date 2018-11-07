@@ -68,7 +68,7 @@ public class AdressbuchMethoden implements KontaktMethoden {
 	}
 	
 	/*
-	 * (non-Javadoc)
+	 * 
 	 * @see adressbuch.KontaktMethoden#löscheKontakt(java.lang.String, java.util.ArrayList)
 	 * 
 	 * Mit dieser Methode kann man einen Kontakt löschen.
@@ -122,7 +122,7 @@ public class AdressbuchMethoden implements KontaktMethoden {
 				listPerson.remove(person);
 				System.out.println("Bearbeite Kontakt!");
 				return erstelleKontakt();
-			} else if(person.getVorname() != vorname) {
+			} else if(vorname != person.getVorname()) {
 				System.out.println("Es wurde kein Kontakt mit diesem Vornamen gefunden. ");
 			}
 		}
