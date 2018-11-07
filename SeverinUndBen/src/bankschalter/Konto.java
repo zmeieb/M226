@@ -17,6 +17,34 @@ public class Konto {
 		kontoNr = initKontoNr();
 	}
 	
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public String getOwnerLastname() {
+		return ownerLastname;
+	}
+
+	public void setOwnerLastname(String ownerLastname) {
+		this.ownerLastname = ownerLastname;
+	}
+
+	public String getOwnerFirstname() {
+		return ownerFirstname;
+	}
+
+	public void setOwnerFirstname(String ownerFirstname) {
+		this.ownerFirstname = ownerFirstname;
+	}
+
+	public void setKontoNr(String kontoNr) {
+		this.kontoNr = kontoNr;
+	}
+
 	public boolean withdraw(double amount) {
 		boolean hasEnoughSaldo = true;
 		
