@@ -1,20 +1,19 @@
 package notenverwaltung;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Faecher extends JFrame {
-
+	private ArrayList<Fach> faecher;
 	private JPanel contentPane;
 
 	/**
@@ -43,17 +42,15 @@ public class Faecher extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		faecher = SqlManager.LoadFaecher();
 		JButton btnFachHinzufgen = new JButton("Fach hinzuf\u00FCgen");
 		btnFachHinzufgen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddFach addfach = new AddFach();
-				addfach.InitWindow();
+				AddFach.InitWindow();
 			}
 		});
 		btnFachHinzufgen.setBounds(311, 44, 113, 23);
 		contentPane.add(btnFachHinzufgen);
-		ArrayList<Fach> faecher = SqlManager.LoadFaecher();
 		ArrayList<String> faecherStr = new ArrayList<String>();
 		for(Fach fach :faecher){
 			faecherStr.add(fach.getFachID() + " - " + fach.getFachname());
