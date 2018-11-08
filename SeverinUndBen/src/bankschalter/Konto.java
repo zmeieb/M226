@@ -6,15 +6,37 @@ public class Konto {
 	public String getKontoNr() {
 		return kontoNr;
 	}
+	
+	private String loginName = "";
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	private String password = "";
 
 	private double saldo = 0.0;
 	private String ownerLastname = "";
 	private String ownerFirstname = "";
 	
-	public Konto (String lastname, String firstname) {
+	public Konto (String firstname, String lastname,String username, String password) {
 		ownerLastname= lastname;
 		ownerFirstname = firstname;
+		this.loginName = username;
+		this.password = password;
 		kontoNr = initKontoNr();
+	}
+	
+	public Konto (String kontoNr,String firstname, String lastname, double saldo,String loginName,String password) {
+		this.kontoNr = kontoNr;
+		this.ownerFirstname = firstname;
+		this.ownerLastname = lastname;
+		this.saldo = saldo;
+		this.loginName = loginName;
+		this.password = password;
 	}
 	
 	public double getSaldo() {

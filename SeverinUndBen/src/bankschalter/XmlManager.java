@@ -23,34 +23,38 @@ public class XmlManager {
 	
 	private ArrayList<Konto> kontoList;
 
-	public ArrayList<Konto> getKontoList() {
-		return kontoList;
-	}
-
 	public void setKontoList(ArrayList<Konto> kontoList) {
 		this.kontoList = kontoList;
 	}
 
-	/*public ArrayList<Konto> GetKontos() {
+	public ArrayList<Konto> getKontoList() {
+		return kontoList;
+	}
+
+	public void AddKontoToKontoList(Konto konto) {
+		kontoList.add(konto);
+	}
+
+	public void LoadKontos() {
+		ArrayList<Konto> tempkontoList = new ArrayList<Konto>();
 		try {
-		File fXmlFile = new File("Kontos.xml");
+		File fXmlFile = new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\test\\Kontos.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 		dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
-		NodeList nList = doc.getElementsByTagName("staff");
+		NodeList nList = doc.getElementsByTagName("Konto");
 		for (int temp = 0; temp < nList.getLength(); temp++) {
-			
-			Node nNode = nList.item(temp);
-					
-			System.out.println("\nCurrent Element :" + nNode.getNodeName());
-					
-			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-				Element eElement = (Element) nNode;
-
-
+			Node nNode = nList.item(temp);	
+			NodeList childList = nNode.getChildNodes();
+			ArrayList<String> childListString = new ArrayList<String>();
+			for (int i = 0; i < childList.getLength(); i++) {
+				childListString.add(childList.item(i).getFirstChild().getNodeValue());
 			}
+			Konto tempKonto = new Konto(childList.item(0).getFirstChild().getNodeValue(),childList.item(1).getFirstChild().getNodeValue()
+					,childList.item(2).getFirstChild().getNodeValue(),Double.parseDouble(childList.item(3).getFirstChild().getNodeValue()),
+					childList.item(4).getFirstChild().getNodeValue(),childList.item(5).getFirstChild().getNodeValue());	
+			tempkontoList.add(tempKonto);
 		}
 		}catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -62,7 +66,8 @@ public class XmlManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+		setKontoList(tempkontoList);
+	}
 	
 	public void CreateXml() {
 		try {
@@ -94,19 +99,24 @@ public class XmlManager {
 				saldo.appendChild(document.createTextNode(String.valueOf(konto.getSaldo())));
 				kontoElement.appendChild(saldo);
 				
+				Element username = document.createElement("Username");
+				username.appendChild(document.createTextNode(String.valueOf(konto.getLoginName())));
+				kontoElement.appendChild(username);
+				Element password = document.createElement("Password");
+				password.appendChild(document.createTextNode(String.valueOf(konto.getPassword())));
+				kontoElement.appendChild(password);
 			}
 			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(document);
-			StreamResult streamResult = new StreamResult(new File("C:\\Users\\Severin\\Desktop\\files\\Konto.xml"));
+			StreamResult streamResult = new StreamResult(new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\test\\Kontos.xml"));
             transformer.transform(domSource, streamResult);
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		catch (TransformerException tfe) {
-            tfe.printStackTrace();
+			System.out.println(tfe.getMessage());
 		}
 	}
 }
