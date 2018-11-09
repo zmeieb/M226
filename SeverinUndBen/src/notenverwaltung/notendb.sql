@@ -21,36 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `notendb`
 --
+create schema notendb;
+use notendb;
 
-DELIMITER $$
---
--- Prozeduren
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddFach` (IN `FachName` VARCHAR(45), IN `Fach_Id` INT)  NO SQL
-insert into fach Value(Fach_Id,Fachname)$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNote` (IN `Noten_Id` INT, IN `Fach_ID` INT, IN `Gewichtung` INT, IN `ErhalteneNote` FLOAT)  NO SQL
-Insert Into note VALUES(Noden_Id,Fach_Id,Gewichtung,ErhalteneNote)$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteFach` (IN `Fach_ID` INT)  NO SQL
-DELETE from fach where fach.Fach_ID = Fach_ID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteNote` (IN `Noten_Id` INT)  NO SQL
-DELETE from Note where note.Noten_ID = Noden_Id$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `LoadFaecher` ()  NO SQL
-SELECT * from Fach$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `LoadNoten` ()  NO SQL
-SELECT * from note$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateFach` (IN `Fach_IDParam` INT, IN `FachnameParam` VARCHAR(45))  NO SQL
-Update Fach set Fach.Fachname= FachnameParam where Fach.Fach_ID = Fach_IDParam$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateNote` (IN `Noten_ID` INT, IN `Fach_ID` INT, IN `Gewichtung` INT, IN `ErhalteneNote` FLOAT)  NO SQL
-Update note set note.Fach_ID = Fach_ID, note.Gewichtung= Gewichtung, note.ErhalteneNote = ErhalteneNote where note.Noten_ID = Noten_ID$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -122,3 +95,33 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DELIMITER $$
+--
+-- Prozeduren
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddFach` (IN `FachName` VARCHAR(45), IN `Fach_Id` INT)  NO SQL
+insert into fach Value(Fach_Id,Fachname)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNote` (IN `Noten_Id` INT, IN `Fach_ID` INT, IN `Gewichtung` INT, IN `ErhalteneNote` FLOAT)  NO SQL
+Insert Into note VALUES(Noden_Id,Fach_Id,Gewichtung,ErhalteneNote)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteFach` (IN `Fach_ID` INT)  NO SQL
+DELETE from fach where fach.Fach_ID = Fach_ID$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteNote` (IN `Noten_Id` INT)  NO SQL
+DELETE from Note where note.Noten_ID = Noden_Id$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `LoadFaecher` ()  NO SQL
+SELECT * from Fach$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `LoadNoten` ()  NO SQL
+SELECT * from note$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateFach` (IN `Fach_IDParam` INT, IN `FachnameParam` VARCHAR(45))  NO SQL
+Update Fach set Fach.Fachname= FachnameParam where Fach.Fach_ID = Fach_IDParam$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateNote` (IN `Noten_ID` INT, IN `Fach_ID` INT, IN `Gewichtung` INT, IN `ErhalteneNote` FLOAT)  NO SQL
+Update note set note.Fach_ID = Fach_ID, note.Gewichtung= Gewichtung, note.ErhalteneNote = ErhalteneNote where note.Noten_ID = Noten_ID$$
+
+DELIMITER ;

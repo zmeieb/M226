@@ -1,5 +1,7 @@
 package notenverwaltung;
 
+import java.util.ArrayList;
+
 public class Fach {
 	public int getFachID() {
 		return FachID;
@@ -15,4 +17,13 @@ public class Fach {
 		this.Fachname = Fachname;
 	}
 	
+	public static int getFachIDFromFachname(String fachname) {
+		ArrayList<Fach> faecher = SqlManager.LoadFaecher();
+		for (Fach fach : faecher) {
+			if(fach.getFachname().equals(fachname)) {
+				return fach.getFachID();
+			}
+		}
+		return 0;
+	}
 }

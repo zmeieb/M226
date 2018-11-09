@@ -36,8 +36,8 @@ public class Faecher extends JFrame {
 	 * Create the frame.
 	 */
 	public Faecher() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setBounds(100, 100, 600, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,14 +49,20 @@ public class Faecher extends JFrame {
 				AddFach.InitWindow();
 			}
 		});
-		btnFachHinzufgen.setBounds(311, 44, 113, 23);
+		Object [][] content = new Object[faecher.size()][2];
+		for(int i = 0; i<faecher.size();i++) {
+			content[i][0] = faecher.get(i).getFachID();
+			content[i][1] = faecher.get(i).getFachname();
+		}
+		Object[] columns = { "ID", "Fachname"};
+		btnFachHinzufgen.setBounds(350, 44, 200, 23);
 		contentPane.add(btnFachHinzufgen);
 		ArrayList<String> faecherStr = new ArrayList<String>();
 		for(Fach fach :faecher){
 			faecherStr.add(fach.getFachID() + " - " + fach.getFachname());
 		}
-		JList<String> list = new JList<String>(faecherStr.toArray(new String[faecherStr.size()]));
-		list.setBounds(30, 35, 291, 132);
-		contentPane.add(list);
+		JTable table = new JTable(content, columns);
+		table.setBounds(30, 35, 291, 132);
+		contentPane.add(table);
 	}
 }

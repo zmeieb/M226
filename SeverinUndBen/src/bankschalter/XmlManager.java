@@ -38,7 +38,7 @@ public class XmlManager {
 	public void LoadKontos() {
 		ArrayList<Konto> tempkontoList = new ArrayList<Konto>();
 		try {
-		File fXmlFile = new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\test\\Kontos.xml");
+		File fXmlFile = new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\xml\\Kontos.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 		dBuilder = dbFactory.newDocumentBuilder();
@@ -110,7 +110,7 @@ public class XmlManager {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(document);
-			StreamResult streamResult = new StreamResult(new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\test\\Kontos.xml"));
+			StreamResult streamResult = new StreamResult(new File("D:\\github\\M226\\SeverinUndBen\\src\\bankschalter\\xml\\Kontos.xml"));
             transformer.transform(domSource, streamResult);
 		} catch (ParserConfigurationException e) {
 			System.out.println(e.getMessage());

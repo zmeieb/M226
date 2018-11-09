@@ -80,4 +80,21 @@ public class SqlManager {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public static void AddNote(int fachId, int gewichtung, float note) {
+		String query = "{ call AddNote(?,?,?,?)}";
+		ResultSet rs;
+		ActConnection = InitConnection();
+		try
+			{
+			CallableStatement cs = ActConnection.prepareCall(query);
+			cs.setInt("Noten_ID", LoadNoten().size()+1);
+			cs.setInt("Fach_ID", fachId);
+			cs.setInt("Gewichtung", gewichtung);
+			cs.setFloat("ErhalteneNote",note);
+			rs = cs.executeQuery();
+		}catch(SQLException  e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

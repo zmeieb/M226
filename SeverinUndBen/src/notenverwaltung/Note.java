@@ -1,5 +1,7 @@
 package notenverwaltung;
 
+import java.util.ArrayList;
+
 public class Note {
 	public int getNotenID() {
 		return notenID;
@@ -31,4 +33,13 @@ public class Note {
 		this.berechneteNote = (erhalteneNote/100)*gewichtung;
 	}
 	
+	public String getFachName() {
+		ArrayList<Fach> faecher = SqlManager.LoadFaecher();
+		for(Fach fach : faecher) {
+			if(fach.getFachID() == fachID) {
+				return fach.getFachname();
+			}
+		}
+		return "";
+	}
 }

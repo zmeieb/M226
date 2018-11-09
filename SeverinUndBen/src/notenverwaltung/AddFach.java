@@ -1,9 +1,10 @@
 package notenverwaltung;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -36,7 +37,7 @@ public class AddFach extends JFrame {
 	 * Create the frame.
 	 */
 	public AddFach() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,14 +49,19 @@ public class AddFach extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!Fachfield.getText().equals("")) {
 					SqlManager.AddFach(Fachfield.getText());
+					JOptionPane.showMessageDialog(contentPane,
+						    "Erfolgreich abgespeichert",
+						    "Erfolgreich", JOptionPane.OK_CANCEL_OPTION);
 				}
 			}
 		});
-		btnNewButton.setBounds(171, 143, 89, 23);
+		btnNewButton.setBounds(171, 143, 150, 23);
 		contentPane.add(btnNewButton);
-		
+		JLabel fachlabel = new JLabel("Fachname:");
+		fachlabel.setBounds(10, 84, 100, 20);
+		contentPane.add(fachlabel);
 		Fachfield = new JTextField();
-		Fachfield.setBounds(96, 84, 240, 20);
+		Fachfield.setBounds(120, 84, 240, 20);
 		contentPane.add(Fachfield);
 		Fachfield.setColumns(10);
 	}
